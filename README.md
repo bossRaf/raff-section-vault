@@ -1,4 +1,3 @@
-```md
 # 🎓 Section Vault
 
 > A secure, private Alumni Tracer System built with **Next.js**, **Supabase**, **PostgreSQL**, and **TypeScript**.
@@ -81,31 +80,30 @@ The frontend never determines permissions. All sensitive operations are validate
 ---
 
 ## 🗄 Database
-```
 
+```text
 auth.users
-│
-▼
-profiles
-│
-├── classmates
-├── memories
-│ └── memory_reactions
-├── announcements
-└── settings
-
-````
+    │
+    ▼
+ profiles
+    │
+    ├── classmates
+    ├── memories
+    │   └── memory_reactions
+    ├── announcements
+    └── settings
+```
 
 ---
 
 ## 📦 Storage Buckets
 
-| Bucket | Access |
-|---------|--------|
-| profile-images | Public |
-| memory-media | Public |
-| system-assets | Public |
-| exports | Private |
+| Bucket         | Access  |
+| -------------- | ------- |
+| profile-images | Public  |
+| memory-media   | Public  |
+| system-assets  | Public  |
+| exports        | Private |
 
 ---
 
@@ -114,9 +112,9 @@ profiles
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/bossraf/raff-section-vault
 cd section-vault
-````
+```
 
 ### 2. Install dependencies
 
@@ -166,7 +164,3 @@ Deploy using **Vercel**.
 **Raffy Maluya**
 
 Built as a portfolio project demonstrating modern full-stack development using **Next.js**, **Supabase**, and **PostgreSQL** with a security-first approach.
-
-```
-
-```
