@@ -4,8 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { LoginModal } from "@/components/auth/login-modal";
-import { RegisterModal } from "@/components/auth/register-modal";
+import { AuthModals } from "@/components/auth/auth-modals";
 
 export function Header() {
   const pathname = usePathname();
@@ -43,23 +42,24 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <LoginModal>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-accent text-accent-foreground hover:bg-accent/80"
-            >
-              Login
-            </Button>
-          </LoginModal>
+        <AuthModals>
+          {({ openLogin, openRegister }) => (
+            <div className="flex items-center gap-3">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-accent text-accent-foreground hover:bg-accent/80"
+                onClick={openLogin}
+              >
+                Login
+              </Button>
 
-          <RegisterModal>
-            <Button size="lg" className="bg-primary">
-              Register
-            </Button>
-          </RegisterModal>
-        </div>
+              <Button size="lg" className="bg-primary" onClick={openRegister}>
+                Register
+              </Button>
+            </div>
+          )}
+        </AuthModals>
       </div>
     </header>
   );

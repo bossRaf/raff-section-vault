@@ -31,21 +31,26 @@ export default function AboutPage() {
   return (
     <div className="bg-background">
       <section className="mx-auto max-w-4xl px-6 py-24">
-        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-          Built for our class
-          <br /> <span className="text-primary">No one else</span>
-        </h1>
+        <div className="flex flex-col items-center justify-center text-center">
+          <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+            Built for our class
+            <br /> <span className="text-primary">No one else</span>
+          </h1>
 
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          Section Vault is a private alumni platform created exclusively for our
-          class. A protected space to stay connected, track careers, and
-          preserve memories that matter.
-        </p>
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            Section Vault is a private alumni platform created exclusively for
+            our class. A protected space to stay connected, track careers, and
+            preserve memories that matter.
+          </p>
+        </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {features.map((feature) => (
-            <div key={feature.title} className="rounded-lg border bg-card p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent text-accent-foreground">
+            <div
+              key={feature.title}
+              className="rounded-lg border bg-accent p-6"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-300 text-accent-foreground">
                 <feature.icon className="h-5 w-5" />
               </div>
 

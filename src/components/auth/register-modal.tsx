@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,8 +15,17 @@ import { createClient } from "@/lib/supabase/client";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 
-export function RegisterModal({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
+interface RegisterModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSwitchToLogin: () => void;
+}
+
+export function RegisterModal({
+  open,
+  onOpenChange,
+  onSwitchToLogin,
+}: RegisterModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -71,7 +79,7 @@ export function RegisterModal({ children }: { children: React.ReactNode }) {
     }
 
     setLoading(false);
-    setOpen(false);
+    onOpenChange(false);
     router.push("/dashboard");
     router.refresh();
   }
@@ -87,8 +95,7 @@ export function RegisterModal({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-sm">
         <DialogHeader>
           <DialogTitle className="font-bold">Create your account</DialogTitle>
@@ -145,9 +152,7 @@ export function RegisterModal({ children }: { children: React.ReactNode }) {
             <span className="w-full border-t" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
-            </span>
+            <span className="bg-background px-2 text-muted-foreground">or</span>
           </div>
         </div>
 
@@ -159,6 +164,22 @@ export function RegisterModal({ children }: { children: React.ReactNode }) {
           <FcGoogle className="h-4 w-4" />
           Continue with Google
         </Button>
+
+        <div className="rounded-lg border bg-muted/50 p-3 text-center text-sm text-muted-foreground">
+          🔒 Only approved classmates can register. Your email must be on the
+          whitelist to proceed.
+        </div>
+
+        <p className="text-center text-sm text-muted-foreground">
+          Already have an account?{" "}
+          <button
+            type="button"
+            onClick={onSwitchToLogin}
+            className="font-medium text-primary hover:underline"
+          >
+            Login
+          </button>
+        </p>
       </DialogContent>
     </Dialog>
   );

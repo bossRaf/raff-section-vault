@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,8 +15,17 @@ import { createClient } from "@/lib/supabase/client";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 
-export function LoginModal({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
+interface LoginModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSwitchToRegister: () => void;
+}
+
+export function LoginModal({
+  open,
+  onOpenChange,
+  onSwitchToRegister,
+}: LoginModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +58,7 @@ export function LoginModal({ children }: { children: React.ReactNode }) {
       .single();
 
     setLoading(false);
-    setOpen(false);
+    onOpenChange(false);
 
     if (profile?.role === "admin") {
       router.push("/admin");
@@ -72,12 +80,11 @@ export function LoginModal({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-sm">
         <DialogHeader>
           <DialogTitle className="font-bold">
-            Log in to Section Vault
+            Login to Section Vault
           </DialogTitle>
         </DialogHeader>
 
@@ -122,7 +129,7 @@ export function LoginModal({ children }: { children: React.ReactNode }) {
 
           <Button type="submit" className="w-full" disabled={loading}>
             {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-            Log in
+            Login
           </Button>
         </form>
 
@@ -131,9 +138,7 @@ export function LoginModal({ children }: { children: React.ReactNode }) {
             <span className="w-full border-t" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
-            </span>
+            <span className="bg-background px-2 text-muted-foreground">or</span>
           </div>
         </div>
 
@@ -145,6 +150,17 @@ export function LoginModal({ children }: { children: React.ReactNode }) {
           <FcGoogle className="h-4 w-4" />
           Continue with Google
         </Button>
+
+        <p className="text-center text-sm text-muted-foreground">
+          No account yet?{" "}
+          <button
+            type="button"
+            onClick={onSwitchToRegister}
+            className="font-medium text-primary hover:underline"
+          >
+            Register here
+          </button>
+        </p>
       </DialogContent>
     </Dialog>
   );

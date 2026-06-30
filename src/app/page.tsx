@@ -2,7 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { LoginModal } from "@/components/auth/login-modal";
+import { HeroActions } from "@/components/home/hero-actions";
+
+// ...inside the JSX, where AuthModals was:
+<HeroActions />;
 
 export default async function HomePage() {
   const supabase = await createClient();
@@ -51,21 +54,7 @@ export default async function HomePage() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <LoginModal>
-            <Button size="lg" className="bg-primary">
-              Log in to your account
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Button>
-          </LoginModal>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-accent text-accent-foreground hover:bg-accent/80"
-            asChild
-          >
-            <Link href="/about">Learn more</Link>
-          </Button>
+          <HeroActions />
         </div>
 
         <div className="mt-20 grid w-full grid-cols-3 gap-8 border-t pt-10">
