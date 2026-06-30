@@ -67,13 +67,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {latestAnnouncements && latestAnnouncements.length > 0 && (
-        <section className="border-t bg-muted/30">
-          <div className="mx-auto max-w-5xl px-6 py-16">
-            <p className="mb-8 text-sm font-semibold tracking-wide text-muted-foreground">
-              LATEST ANNOUNCEMENTS
-            </p>
+      <section className="border-t bg-muted/30">
+        <div className="mx-auto max-w-5xl px-6 py-16">
+          <p className="mb-8 text-sm font-semibold tracking-wide text-muted-foreground">
+            LATEST ANNOUNCEMENTS
+          </p>
 
+          {latestAnnouncements && latestAnnouncements.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-3">
               {latestAnnouncements.map((announcement) => (
                 <div
@@ -83,21 +83,38 @@ export default async function HomePage() {
                   <p className="text-xs text-muted-foreground">
                     {new Date(announcement.created_at).toLocaleDateString(
                       "en-US",
-                      { year: "numeric", month: "long", day: "numeric" },
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      },
                     )}
                   </p>
+
                   <h3 className="mt-2 font-semibold text-card-foreground">
                     {announcement.title}
                   </h3>
+
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
                     {announcement.content}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          ) : (
+            <div className="rounded-lg border border-dashed bg-muted p-10 text-center">
+              <h3 className="text-lg font-semibold text-card-foreground">
+                No announcements yet
+              </h3>
+
+              <p className="mt-2 text-sm text-muted-foreground">
+                The admin hasn't published any announcements yet. Check back
+                later for updates.
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

@@ -46,11 +46,8 @@ export default function AboutPage() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="rounded-lg border bg-accent p-6"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-300 text-accent-foreground">
+            <div key={feature.title} className="rounded-lg border bg-muted p-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent text-accent-foreground">
                 <feature.icon className="h-5 w-5" />
               </div>
 

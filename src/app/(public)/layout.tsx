@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "Section Vault",
@@ -9,12 +10,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
-    </html>
+    <>
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </>
   );
 }
