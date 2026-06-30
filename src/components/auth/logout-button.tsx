@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { Loader2 } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
 
 export function LogoutButton() {
   const [loading, setLoading] = useState(false);
@@ -19,9 +19,18 @@ export function LogoutButton() {
   }
 
   return (
-    <Button variant="outline" onClick={handleLogout} disabled={loading}>
-      {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-      Log out
+    <Button
+      className="bg-accent flex items-center gap-2"
+      variant="outline"
+      onClick={handleLogout}
+      disabled={loading}
+    >
+      {loading ? (
+        <Loader2 className="h-4 w-4 animate-spin" />
+      ) : (
+        <LogOut className="h-4 w-4" />
+      )}
+      <span>Log out</span>
     </Button>
   );
 }
