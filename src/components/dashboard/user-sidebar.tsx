@@ -13,14 +13,14 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/classmates", label: "Classmates", icon: Users },
-  { href: "/admin/profiles", label: "Profiles", icon: UserCircle },
-  { href: "/admin/announcements", label: "Announcements", icon: Megaphone },
-  { href: "/admin/settings", label: "Settings", icon: Settings },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard/test1", label: "Test 1", icon: Users },
+  { href: "/dashboard/test2", label: "Test 2", icon: UserCircle },
+  { href: "/dashboard/test3", label: "Test 3", icon: Megaphone },
+  { href: "/dashboard/test4", label: "Test 4", icon: Settings },
 ];
 
-export function AdminSidebar({ displayName }: { displayName: string | null }) {
+export function UserSidebar({ displayName }: { displayName: string | null }) {
   const pathname = usePathname();
 
   return (

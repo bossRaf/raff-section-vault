@@ -1,32 +1,26 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { LogoutButton } from "@/components/auth/logout-button";
 
-export default async function DashboardPage() {
+export default async function UserPage() {
   const supabase = await createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect("/");
-  }
-
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role")
-    .eq("id", user.id)
+    .select("display_name")
+    .eq("id", user!.id)
     .single();
-
-  if (!profile) {
-    redirect("/");
-  }
 
   return (
     <div>
-      <h1>Hello User</h1>
-      <LogoutButton />
+      <h1 className="text-2xl font-bold text-foreground">
+        Hello, {profile?.display_name ?? "User"} 👋
+      </h1>
+      <p className="mt-2 text-muted-foreground">
+        Welcome to the Section Vault user panel.
+      </p>
     </div>
   );
 }

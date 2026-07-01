@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkle } from "lucide-react";
+import { Sparkle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { HeroActions } from "@/components/home/hero-actions";
 
