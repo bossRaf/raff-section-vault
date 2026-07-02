@@ -14,10 +14,10 @@ import {
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/dashboard/test1", label: "Test 1", icon: Users },
-  { href: "/dashboard/test2", label: "Test 2", icon: UserCircle },
-  { href: "/dashboard/test3", label: "Test 3", icon: Megaphone },
-  { href: "/dashboard/test4", label: "Test 4", icon: Settings },
+  { href: "/dashboard/profile", label: "Profile", icon: Users },
+  { href: "/dashboard/directory", label: "Directory", icon: UserCircle },
+  { href: "/dashboard/memories", label: "Memories", icon: Megaphone },
+  { href: "/dashboard/announcements", label: "Annoncements", icon: Settings },
 ];
 
 export function UserSidebar({ displayName }: { displayName: string | null }) {
@@ -53,15 +53,11 @@ export function UserSidebar({ displayName }: { displayName: string | null }) {
             </Link>
           );
         })}
-        <div className="border-t p-4">
-          <LogoutButton />
-        </div>
       </nav>
 
-      {/* <div className="border-t p-4">
-        
+      <div className="border-t p-4">
         <LogoutButton />
-      </div> */}
+      </div>
     </aside>
   );
 }

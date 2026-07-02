@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/classmates", label: "Classmates", icon: Users },
   { href: "/admin/profiles", label: "Profiles", icon: UserCircle },
   { href: "/admin/announcements", label: "Announcements", icon: Megaphone },

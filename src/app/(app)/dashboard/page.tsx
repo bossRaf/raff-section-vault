@@ -19,7 +19,7 @@ export default async function UserPage() {
         Hello, {profile?.display_name ?? "User"} 👋
       </h1>
       <p className="mt-2 text-muted-foreground">
-        Welcome to the Section Vault user panel.
+        Welcome to the Section Vault admin or user panel.
       </p>
     </div>
   );
