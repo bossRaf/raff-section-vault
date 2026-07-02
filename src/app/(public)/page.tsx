@@ -55,6 +55,7 @@ export default async function HomePage() {
           <HeroActions />
         </div>
 
+        {/* Stats */}
         <div className="mt-20 grid w-full grid-cols-3 gap-8 border-t pt-10">
           {stats.map((stat) => (
             <div key={stat.label}>

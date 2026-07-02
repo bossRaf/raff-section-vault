@@ -40,6 +40,15 @@ export function RegisterModal({
     setError(null);
     setLoading(true);
 
+    const { data: registrationEnabled, error: settingsError } =
+      await supabase.rpc("is_registration_enabled");
+
+    if (settingsError || !registrationEnabled) {
+      setLoading(false);
+      setError("Registration is currently closed. Please check back later.");
+      return;
+    }
+
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
@@ -86,6 +95,16 @@ export function RegisterModal({
 
   async function handleGoogleRegister() {
     setError(null);
+
+    const { data: registrationEnabled, error: settingsError } =
+      await supabase.rpc("is_registration_enabled");
+
+    if (settingsError || !registrationEnabled) {
+      setLoading(false);
+      setError("Registration is currently closed. Please check back later.");
+      return;
+    }
+
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
