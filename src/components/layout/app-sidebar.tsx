@@ -15,7 +15,7 @@ export function AppSidebar({ isAdmin }: AppSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-16 h-[calc(100vh-4rem)] w-72 shrink-0 border-r bg-background">
+    <aside className="sticky top-16 h-[calc(100vh-4rem)] w-72 shrink-0 border-r bg-muted">
       <nav className="flex-1 px-4 py-6">
         <div className="space-y-1">
           <p className="mb-3 px-3 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
@@ -23,7 +23,10 @@ export function AppSidebar({ isAdmin }: AppSidebarProps) {
           </p>
 
           {mainNav.map((item) => {
-            const active = pathname.startsWith(item.href);
+            const active =
+              item.href === "/dashboard"
+                ? pathname === "/dashboard"
+                : pathname.startsWith(item.href);
 
             return (
               <Link

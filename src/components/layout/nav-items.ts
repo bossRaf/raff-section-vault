@@ -16,22 +16,22 @@ export const mainNav = [
     icon: LayoutDashboard,
   },
   {
-    href: "/profile",
-    label: "Profile",
+    href: "/dashboard/profile",
+    label: "Edit Profile",
     icon: User,
   },
   {
-    href: "/directory",
+    href: "/dashboard/directory",
     label: "Directory",
     icon: BookUser,
   },
   {
-    href: "/memories",
+    href: "/dashboard/memories",
     label: "Memories",
     icon: Images,
   },
   {
-    href: "/announcements",
+    href: "/dashboard/announcements",
     label: "Announcements",
     icon: Megaphone,
   },
@@ -45,12 +45,12 @@ export const adminNav = [
   },
   {
     href: "/admin/profiles",
-    label: "Users",
+    label: "Classmates Profile",
     icon: Users,
   },
   {
     href: "/admin/classmates",
-    label: "Classmates",
+    label: "Classmates Whitelist",
     icon: Users,
   },
   {

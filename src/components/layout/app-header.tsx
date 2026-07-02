@@ -10,14 +10,14 @@ type AppHeaderProps = {
 
 const pageTitles: Record<string, string> = {
   "/dashboard": "Dashboard",
-  "/profile": "Profile",
+  "/profile": "Edit Profile",
   "/directory": "Directory",
   "/memories": "Memories",
   "/announcements": "Announcements",
 
   "/admin": "Overview",
+  "/admin/profiles": "Users",
   "/admin/classmates": "Classmates",
-  "/admin/profiles": "Profiles",
   "/admin/announcements": "Announcements",
   "/admin/settings": "Settings",
 };
@@ -39,7 +39,7 @@ export function AppHeader({ displayName, isAdmin }: AppHeaderProps) {
   const initial = (displayName ?? "G").charAt(0).toUpperCase();
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-background px-6">
+    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-muted px-6">
       {/* Logo */}
       <div className="border-b px-6 py-5">
         <div className="flex items-center gap-3">
