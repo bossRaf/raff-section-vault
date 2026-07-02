@@ -126,6 +126,7 @@ export function RegisterModal({
             <Input
               id="register-email"
               type="email"
+              placeholder="example@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -137,6 +138,7 @@ export function RegisterModal({
             <div className="relative">
               <Input
                 id="register-password"
+                placeholder="********"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

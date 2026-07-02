@@ -94,6 +94,7 @@ export function LoginModal({
             <Input
               id="email"
               type="email"
+              placeholder="example@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -105,6 +106,7 @@ export function LoginModal({
             <div className="relative">
               <Input
                 id="password"
+                placeholder="********"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
